@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<script src="calculate.js"> </script>
+<script>
+function calc(form, fname) {
+  var v = form['zinput'].value;
+  document.getElementById(fname + ".resp").innerHTML = eval(fname)(v);
+}
+</script>
+</head>
+<body>
+
+<form id="f1" onSubmit="calc(this, 'mypackage.mycalculate'); return false;">
+<fieldset><legend>mypackage.mycalculate</legend>
+Input: <input type="text" id="zinput" value="222" />
+<input type="submit" value="Convert" />
+Resp: <span id="mypackage.mycalculate.resp" />
+</fieldset>
+</form>
+
+<form id="f2" onSubmit="calc(this, 'mypackage.myothercalc'); return false;">
+<fieldset><legend>mypackage.myothercalc</legend>
+Input: <input type="text" id="zinput" value="222" />
+<input type="submit" value="Convert" />
+Resp: <span id="mypackage.myothercalc.resp" />
+</fieldset>
+</form>
+
+<form id="f3" onSubmit="calc(this, 'mypackage.pow'); return false;">
+<fieldset><legend>mypackage.pow</legend>
+Input: <input type="text" id="zinput" value="2" />
+<input type="submit" value="Convert" />
+Resp: <span id="mypackage.pow.resp" />
+</fieldset>
+</form>
+
+<form id="f4" onSubmit="calc(this, 'mypackage.upper'); return false;">
+<fieldset><legend>mypackage.upper</legend>
+Input: <input type="text" id="zinput" value="abc" />
+<input type="submit" value="Convert" />
+Resp: <span id="mypackage.upper.resp" />
+</fieldset>
+</form>
+
+</body>
+</html>
