@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Random base64 image</title>
+  <script src="base64img.js"> </script>
+<script>
+function gen(form) {
+  var base64img = gopkg.base64img(form['width'].value, form['height'].value, form['cells'].value);
+  document.getElementById("mybase64").value = base64img;
+}
+
+function run() {
+  var base64 = document.getElementById("mybase64").value;
+  var type = document.getElementById("mytype").value;
+  var text = "data:image/" + type + ";base64," + base64;
+  document.getElementById("myimg").src = text;
+  document.getElementById("mypre").innerHTML = text;
+}
+</script>
+</head>
+
+<body onload="run()">
+
+<h3>Generate an image</h3>
+
+<form name="genform" id="genform" method="post" action="javascript:void(0);" onsubmit="gen(this); run(); return false;">
+  <input type="text" name="width" id="width" value="512">
+  <input type="text" name="height" id="height" value="512">
+  <input type="text" name="cells" id="cells" value="16">
+  <input type="submit" name="submit" id="submit" value="submit">
+</form>
+
+<h3>Or paste a base64 image</h3>
+<form name="myform" id="myform" method="post" action="javascript:void(0);" onsubmit="run(this); return false;">
+<textarea name="mybase64" id="mybase64" rows="10" cols="120" oninput="run(document.getElementById('myform'));">
+iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAIAAADTED8xAAADMElEQVR4nOzVwQnAIBQFQYXff81RUkQCOyDj1YOPnbXWPmeTRef+/3O/OyBjzh3CD95BfqICMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMK0CMO0TAAD//2Anhf4QtqobAAAAAElFTkSuQmCC
+</textarea>
+
+<br /><br />
+
+<select name="mytype" id="mytype">
+  <option value="png">png</option>
+  <option value="jpeg">jpeg</option>
+  <option value="gif">gif</option>
+</select>
+
+<br /><br />
+
+<input type="submit" name="submit" id="submit" value="submit">
+</form>
+
+<h3>Result</h3>
+<img name="myimg" id="myimg" src="data:image/png;base64,DEADBEEF" />
+
+<pre id="mypre"></pre>
+
+<br />
+
+<a href="https://github.com/yulvil/gopherjs-examples/tree/master/02-base64img/">Source Code</a>
+
+</body>
+</html>
